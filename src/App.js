@@ -1,25 +1,24 @@
-import "./App.css";
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import schema from "./schema.js";
-
-//baixar a dependencia do formik e yup
+import schema from "./schema";
+import "./App.css";
 
 function App() {
-  function onSubmitMaluco(values, actions) {
-    console.log("Submit", values);
+  function onSubmit(values, actions) {
+    console.log("SUBMIT", values);
   }
 
   return (
     <div className="App">
       <Formik
         validationSchema={schema}
-        onSubmit={onSubmitMaluco}
+        onSubmit={onSubmit}
+        validateOnMount
         initialValues={{
           name: "",
           email: "",
         }}
-        render={({ values, errors, touched, isvalid }) => (
+        render={({ values, errors, touched, isValid }) => (
           <Form>
             <div>
               <label>Nome</label>
@@ -31,8 +30,8 @@ function App() {
               <Field name="email" type="email" />
               <ErrorMessage name="email" />
             </div>
-            <button type="submit" disabled={!isvalid}>
-              Enviar maluco
+            <button type="submit" disabled={!isValid}>
+              Enviar
             </button>
           </Form>
         )}
