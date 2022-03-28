@@ -3,6 +3,8 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import schema from "./schema.js";
 
+//baixar a dependencia do formik e yup
+
 function App() {
   function onSubmitMaluco(values, actions) {
     console.log("Submit", values);
